@@ -12,25 +12,35 @@
     "react-native",
     "stripe"
   ],
-  "license": "MIT",
-  "main": "src/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/z-dev/react-native-checkout"
   },
+  "license": "MIT",
+  "main": "src/index.js",
   "scripts": {
     "ci": "yarn lint",
-    "precommit": "lint-staged && npm run lint",
     "format:js": "npm run prettier -- \"src/**/*.js\"",
     "lint": "eslint ./src --ext=js",
     "lint:watch": "nodemon --exec \"yarn lint\"",
+    "precommit": "lint-staged && npm run lint",
     "prettier": "prettier --single-quote --trailing-comma all --no-semi --print-width 180 --write"
+  },
+  "lint-staged": {
+    "package.json": [
+      "sort-package-json",
+      "git add"
+    ],
+    "src/**/*.js": [
+      "npm run prettier --",
+      "git add"
+    ]
   },
   "dependencies": {
     "lodash": "^4.14.2",
     "payment": "^2.2.1",
     "prop-types": "^15.6.0",
-    "react-native-awesome-card-io": "0.8.0",
+    "react-native-awesome-card-io": "0.9.0-rc.1",
     "react-native-keyboard-spacer": "^0.4.1",
     "string": "^3.3.3"
   },
@@ -54,17 +64,7 @@
     "sort-package-json": "^1.7.1"
   },
   "peerDependencies": {
-    "react": "16.0.0-alpha.12",
-    "react-native": "0.48.4"
-  },
-  "lint-staged": {
-    "src/**/*.js": [
-      "npm run prettier --",
-      "git add"
-    ],
-    "package.json": [
-      "sort-package-json",
-      "git add"
-    ]
+    "react": "16.10.1",
+    "react-native": "0.61.2"
   }
 }
